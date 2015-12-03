@@ -2,26 +2,26 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Home extends Component {
 
-  // disabled because they give warnings
-  // static propTypes = {
-  //   counter: PropTypes.number.isRequired,
-  //   increment: PropTypes.func.isRequired,
-  //   decrement: PropTypes.func.isRequired
-  // };
+  static propTypes = {
+    counter: PropTypes.number.isRequired,
+    actions: PropTypes.object.isRequired
+  };
 
   render () {
-    let { counter, increment, decrement } = this.props;
+    console.log('HOME', this.props)
+
+    let { state, actions } = this.props;
 
     return (
       <div>
         <h1>Home...</h1>
 
         <p>
-          Counter: {counter}
+          Counter: {state.counter}
           {' '}
-          <button onClick={decrement}>decrement</button>
+          <button onClick={actions.decrement}>decrement</button>
           {' '}
-          <button onClick={increment}>increment</button>
+          <button onClick={actions.increment}>increment</button>
         </p>
       </div>
     );

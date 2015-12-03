@@ -1,2 +1,2 @@
-export Feed from './Feed';
+export Login from './Login';
 export Home from './Home';
