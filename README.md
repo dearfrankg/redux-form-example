@@ -12,8 +12,8 @@
 __console.log__
 
 ```text
-warning.js?8a56:45 Warning: Failed propType: Required prop `actions` was not specified in `Home`. Check the render method of `RoutingContext`.
-warning.js?8a56:45 Warning: Failed propType: Required prop `actions` was not specified in `Home`. Check the render method of `RoutingContext`.
+Warning: Failed propType: Required prop `state` was not specified in `Home`. Check the render method of `RoutingContext`.
+Warning: Failed propType: Required prop `actions` was not specified in `Home`. Check the render method of `RoutingContext`.
 LOGIN Object {history: Object, location: Object, params: Object, route: Object, routeParams: Object…}
 LOGIN Object {history: Object, location: Object, params: Object, route: Object, routeParams: Object…}
 LOGIN Object {history: Object, location: Object, params: Object, route: Object, routeParams: Object…}
@@ -29,6 +29,27 @@ LOGIN Object {history: Object, location: Object, params: Object, route: Object, 
 HOME Object {history: Object, location: Object, params: Object, route: Object, routeParams: Object…}
 HOME Object {history: Object, location: Object, params: Object, route: Object, routeParams: Object…}
 ```
+
+> the login component looks pretty good. your rendering questions are more about react-router. although one thing to know about is that when you are using redux-devtools, it will replay every action every time it gets an action, which will probably cause many re-renders.
+>
+>-- erikras of redux-form -- after a code review
+
+I removed redux-devtools but my problems persist.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

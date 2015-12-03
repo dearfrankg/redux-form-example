@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class Home extends Component {
 
   static propTypes = {
-    counter: PropTypes.number.isRequired,
+    state: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
   };
 
