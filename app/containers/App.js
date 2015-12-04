@@ -3,10 +3,16 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../actions';
+import {Home, Login} from '../components';
 
 import '../styles/main.scss';
 
-class App extends Component {
+
+@connect(
+  state => ({ state: state }),
+  dispatch => ({ actions: bindActionCreators(actionCreators, dispatch) })
+)
+export default class App extends Component {
 
   static propTypes = {
     state: PropTypes.object.isRequired,
@@ -14,19 +20,22 @@ class App extends Component {
   };
 
   render () {
-    let stuff = [];
-    for (var x in this.props) {
-      stuff.push(<div key={x}> {x}, {
-        x === 'state' && JSON.stringify(this.props.state, null, 2) ||
-        x === 'actions' && Object.keys(this.props.actions).join(`\n`) || ''
-      }</div>);
-    }
+    // let stuff = [];
+    // for (var x in this.props) {
+    //   stuff.push(<div key={x}> {x}, {
+    //     x === 'state' && JSON.stringify(this.props.state, null, 2) ||
+    //     x === 'actions' && Object.keys(this.props.actions).join(`\n`) || ''
+    //   }</div>);
+    // }
+    // <pre>
+    // {stuff}
+    // </pre>
+
 
     // stack overflow technique -- http://goo.gl/TcCsbv
     let childrenWithProps = React.Children.map(this.props.children, (child) => {
         return React.cloneElement(child, {...this.props});
     });
-
 
     return (
       <div>
@@ -37,17 +46,9 @@ class App extends Component {
 
         {childrenWithProps}
 
-        <pre>
-        {stuff}
-        </pre>
       </div>
     );
 
   }
 
 }
-
-export default connect(
-  state => ({ state: state }),
-  dispatch => ({ actions: bindActionCreators(actionCreators, dispatch) })
-)(App)

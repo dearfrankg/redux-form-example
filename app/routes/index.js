@@ -7,8 +7,8 @@ import {
 } from '../components';
 
 export default(
-    <Route path='/' component={App}>
-        <IndexRoute component={Home}/>
-        <Route path="login" component={Login}/>
-    </Route>
+  <Route path='/' component={App}>
+    <IndexRoute component={Home}/>
+    <Route path="login" component={Login}/>
+  </Route>
 );
