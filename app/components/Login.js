@@ -22,9 +22,9 @@ export default class Login extends Component {
     actions: PropTypes.object.isRequired
   };
 
-  // componentWillMount () {
-  //   this.props.actions.loginUserInit();
-  // }
+  componentWillMount () {
+    this.props.actions.loginUserInit();
+  }
 
   submit(values) {
     console.log('SUBMIT')

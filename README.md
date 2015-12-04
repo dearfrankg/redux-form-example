@@ -59,6 +59,18 @@ Adding two fields to the form causes one render per field, bringing the total to
 
 I think this for rendering after validation.
 
+__after calling an action from componentWillMount__
+
+after adding this code:
+
+```js
+componentWillMount () {
+  this.props.actions.loginUserInit();
+}
+```
+
+that added another rendering bringing the grand total to four.
+
 
 
 
