@@ -4,28 +4,7 @@
 
 ## Problems
 
-- wondering why I get a warning about propType
-
-WORK_AROUND: connect empty state to your components like so:
-
-```js
-[...]
-import {connect} from 'react-redux';
-
-@connect((state) => ({}))
-class MyComponent extends Component {
-[...]
-```
-
-
-- wondering why the render method for Login gets called 5 times
-- wondering why the render method for Home gets called 2 times
-
-
-
-
-
-## The error in the console.log
+### The error in the console.log
 
 ```text
 Warning: Failed propType: Required prop `state` was not specified in `Home`. Check the render method of `RoutingContext`.
@@ -46,7 +25,43 @@ HOME Object {history: Object, location: Object, params: Object, route: Object, r
 HOME Object {history: Object, location: Object, params: Object, route: Object, routeParams: Object…}
 ```
 
-## redux-forms
+
+
+### wondering why I get a warning about propType
+
+
+```js
+// I'm not sure why it happens but I have a work_around.
+
+// WORK_AROUND: connect empty state to your components like so:
+
+[...]
+import {connect} from 'react-redux';
+
+@connect((state) => ({}))
+class MyComponent extends Component {
+[...]
+```
+
+### rendering multiple times
+
+- wondering why the render method for Login gets called 5 times
+- wondering why the render method for Home gets called 2 times
+
+The multiple rendering is a strange problem introduced when I add redux-forms.
+
+Simply adding redux-forms to the `Login component` (without any fields in the form)
+causes the `Home component` to render twice.  While the `Login component` still renders once.
+
+
+
+
+
+
+## Research
+
+
+### redux-forms
 
 > the login component looks pretty good. your rendering questions are more about react-router. although one thing to know about is that when you are using redux-devtools, it will replay every action every time it gets an action, which will probably cause many re-renders.
 >
@@ -55,7 +70,25 @@ HOME Object {history: Object, location: Object, params: Object, route: Object, r
 I removed redux-devtools but my problems persist.
 
 
-## redux-router
+#### Strange behavior from redux-forms
+
+Adding the following line of code causes another component to render twice vs. once
+```js
+// Login component
+
+[...]
+// @connect((state) => ({}))
+@reduxForm({ form: 'login-form', fields, validate })
+[...]
+```
+
+I only have two components Home and Login.  When I change a line in Login it
+forces Home to render twice.  Very strange! Login still renders only once.
+
+
+
+
+### redux-router
 
 I examined the example app that comes with redux-router and it only renders components once.
 I will remove redux-forms from the mix to see if that corrects the problem.
@@ -63,7 +96,7 @@ I will remove redux-forms from the mix to see if that corrects the problem.
 The basic example with redux router shows then using the `connect` function to connect state
 to the App component and no other components.  To be more precise it shows them mapping an empty state like so:
 
-### Work-Around for the warning problem
+#### Work-Around for the warning problem
 
 ```js
 [...]

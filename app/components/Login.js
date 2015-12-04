@@ -10,8 +10,8 @@ import * as actionCreators from '../actions';
 let fields = ['username', 'password'];
 let validate = function () { return {};};
 
-// @reduxForm({ form: 'login-form', fields, validate })
-@connect((state) => ({}))
+// @connect((state) => ({}))
+@reduxForm({ form: 'login-form', fields, validate })
 export default class Login extends Component {
 
   // static propTypes = {
