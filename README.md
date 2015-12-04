@@ -53,6 +53,16 @@ The multiple rendering is a strange problem introduced when I add redux-forms.
 Simply adding redux-forms to the `Login component` (without any fields in the form)
 causes the `Home component` to render twice.  While the `Login component` still renders once.
 
+__after adding two fields to the form__
+
+Adding two fields to the form causes one render per field, bringing the total to three renderings.
+
+I think this for rendering after validation.
+
+
+
+
+
 
 
 
